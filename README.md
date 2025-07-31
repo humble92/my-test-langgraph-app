@@ -13,6 +13,49 @@ The core logic defined in `src/agent/graph.py`, showcases an single-step applica
 
 You can extend this graph to orchestrate more complex agentic workflows that can be visualized and debugged in LangGraph Studio.
 
+## Quick Start
+
+```
+langgraph new --template new-langgraph-project-python my-test-langgraph-app
+```
+
+For debug in VS Code:
+
+```
+    "configurations": [
+        {
+            "name": "🚀 Debug LangGraph Dev Server",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/.venv/Scripts/langgraph.exe",
+            "args": ["dev"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": false
+        },
+        // Require: langgraph dev --debug-port 5678 --allow-blocking
+        {
+            "name": "🔗 Attach to LangGraph Server (--debug-port)",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "."
+                }
+            ],
+            "justMyCode": false
+        }
+    ]
+```
+
 ## Getting Started
 
 <!--
